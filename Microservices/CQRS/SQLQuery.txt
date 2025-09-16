@@ -1,0 +1,46 @@
+Create Table product_command (
+ID INT NOT NULL auto_increment,
+NAME varchar(32) NOT NULL,
+DESCRIPTION varchar(64) NOT NULL,
+PRICE double(7,2) NOT NULL,
+PRIMARY KEY (ID)
+);
+
+
+Create Table product_query (
+ID INT NOT NULL auto_increment,
+NAME varchar(32) NOT NULL,
+DESCRIPTION varchar(64) NOT NULL,
+PRICE double(7,2) NOT NULL,
+PRIMARY KEY (ID)
+);
+
+Select * from product_command;
+Select * from product_query;
+
+
+SELECT * FROM manoj.product_command;
+SELECT * FROM manoj.product_query;
+drop table  manoj.product_command;
+drop table  manoj.product_query;
+
+
+Create Table product_command (
+ID INT NOT NULL auto_increment,
+NAME varchar(32) NOT NULL,
+DESCRIPTION varchar(64) NOT NULL,
+PRICE double(7,2) NOT NULL,
+PRIMARY KEY (ID)
+);
+
+Create Table product_query (
+ID INT NOT NULL auto_increment,
+NAME varchar(32) NOT NULL,
+DESCRIPTION varchar(64) NOT NULL,
+PRICE double(7,2) NOT NULL,
+PRIMARY KEY (ID)
+);
+
+
+
+insert into product_command (NAME, DESCRIPTION, PRICE) Values('Mohan', 'mohan test', 100);

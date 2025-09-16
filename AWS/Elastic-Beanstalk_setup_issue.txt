@@ -1,0 +1,11 @@
+September 17, 2023 16:58:26 (UTC+5:30)	INFO	Deleting SNS topic for environment First-app-3-env.
+September 17, 2023 16:58:25 (UTC+5:30)	ERROR	Failed to launch environment.
+September 17, 2023 16:58:24 (UTC+5:30)	ERROR	The instance profile aws-elasticbeanstalk-ec2-role associated with the environment does not exist.
+September 17, 2023 16:56:08 (UTC+5:30)	INFO	Environment health has transitioned to Pending. Initialization in progress (running for 22 seconds). There are no instances.
+September 17, 2023 16:55:18 (UTC+5:30)	INFO	Using elasticbeanstalk-us-east-1-355464131948 as Amazon S3 storage bucket for environment data.
+September 17, 2023 16:55:16 (UTC+5:30)	INFO	createEnvironment is starting.
+
+
+September 17, 2023 20:26:41 (UTC+5:30)	ERROR	Creating Auto Scaling group failed Reason: You must use a valid fully-formed launch template. No default subnet for availability zone: 'us-east-1c'. (Service: AmazonAutoScaling; Status Code: 400; Error Code: ValidationError; Request ID: 90f10092-d61e-4ce0-8c61-c4ddf956b471; Proxy: null)
+September 17, 2023 20:26:41 (UTC+5:30)	INFO	Created EIP: 54.165.25.85
+September 17, 2023 20:26:41 (UTC+5:30)	ERROR	Stack named 'awseb-e-3ktgvnh5x3-stack' aborted operation. Current state: 'CREATE_FAILED' Reason: The following resource(s) failed to create: [AWSEBAutoScalingGroup].

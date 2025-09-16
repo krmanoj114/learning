@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20250611T143643Z
+UID:543847c2-5a21-45ba-a05d-c14684c35955
+DTSTART:20250613T040000Z
+DTEND:20250613T110000Z
+CLASS:PRIVATE
+DESCRIPTION:Dear Manoj Kumar\,\n\nThank you for registering for AWS Partner
+ : Migration Essentials (Technical). To launch this training\, visit your T
+ ranscript(https://partnercentral.awspartner.com/LmsSsoRedirect?relayState=
+ %2Ftranscript).\n\nThank you\,  \nAWS Training and Certification	\n
+LOCATION:Virtual Location
+SUMMARY:AWS Partner: Migration Essentials (Technical)
+URL:https://partnercentral.awspartner.com/LmsSsoRedirect?relayState=%2Flear
+ ningobject%2Filt%3Ftpid%3D1%26id%3D162556
+X-ALT-DESC;FMTTYPE=text/html:<p>Dear Manoj Kumar\,</p>\n\n<p>Thank you for 
+ registering for AWS Partner: Migration Essentials (Technical). To launch t
+ his training\, visit your <a href="https://partnercentral.awspartner.com/L
+ msSsoRedirect?relayState=%2Ftranscript">Transcript</a>.</p>\n\n<p>Thank yo
+ u\,<br>\nAWS Training and Certification  </p>\n
+END:VEVENT
+END:VCALENDAR
