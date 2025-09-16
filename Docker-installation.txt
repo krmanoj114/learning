@@ -1,0 +1,99 @@
+
+Docker 
+-----
+Download docker - https://docs.docker.com/get-docker/  OR https://docs.docker.com/engine/install/
+
+OR
+https://www.docker.com/products/docker-desktop/
+
+
+Steps to install docker on windows:-
+1>Open - Turn windows feature on or off
+2>Select following cgeckbox ( "Hyper-V",  "Virtual Machine Platform" & Windows Subsystem for Lynux)
+3>Click "OK" Button
+4> Restart System
+5> Check the wsl status
+# wsl --status (If wls is not installed or updated than follow the following steps mentioned in https://learn.microsoft.com/en-us/windows/wsl/install-manual )
+6> Download docker for desktop for windos from https://docs.docker.com/engine/install/
+7> install the downloaded file as an admin
+8> Opem the docker by clicking on docker icon
+9> Register youself on docker, if not registered
+
+
+=============================================================================
+Right-click on Start and select Computer Management from the menu list to open the Computer Management tool on Windows.
+
+C:\ProgramData\Microsoft\Windows\Start Menu
+
+net localgroup docker-users "your-user-id" /ADD
+net localgroup docker-users "INCOFORGETECH\manoj.29.kumar" /ADD
+
+#Docker version
+docker --version
+
+#To install wsl
+---------------
+https://learn.microsoft.com/en-us/windows/wsl/install-manual
+https://www.youtube.com/watch?v=XgRGI0Pw2mM
+
+===	
+
+#Command to Identify the current WSL version
+wls -l -v
+
+#Maven command to build Image
+mvn spring-boot:build-image
+
+
+SQLITE_CONSTRAINT_UNIQUE (Exception from HRESULT: 0x87AF0813)
+
+Docker- desktOp - access denied
+You are not allowed to use docker. you must be in docker-user group
+
+
+Docker Desktop - WSL kernal version too low
+Docker desktop requires a new newer kernal version
+update the kernal by running  "wsl --update" or follow instruction at https://docs.microsoft.com/windows/wsl/wsl2-kernel
+
+========================
+#To run docker file
+docker build -t welcome-to-docker .
+
+# To run docker compose
+docker compose up -d
+
+#Build image
+docker build -t tpex-admin-service.jar .
+
+#Verify Image
+docker image ls
+
+#Run docker
+docker run -p 9090:8080 tpex-admin-service.jar
+
+#To list the running docker images:-
+docker ps
+
+#Tostop the docker
+docker stop
+	
+	
+=====================================================================
+7/9/2023
+--------
+Managing network using CLI
+--------------------------
+#To check the network info
+docker info   --provide info about network
+
+#Command to create a docker network of bridge type
+docker network create -d bridge network1
+
+#To run Mysql
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=cfg@1234 -d mysql/mysql-server 
+
+# To add container to current network
+docker network connect mynet1 mysql 
+
+#To inspect the container
+docker inspect mysql | grep "IPAddress"

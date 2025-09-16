@@ -1,0 +1,40 @@
+Java 8
+------
+Stream
+functional Interface 
+Predicate
+comparable
+merge sort
+Binary Search
+
+Fail fast in java
+stream vs collection
+
+MicroService
+-------------
+12 factor principle
+Rest vs microservices
+Communication between microservice
+profile in spring boot
+Multiple database connictivity in springbBoot
+Circuit Breaker
+Log impl
+How to use any third party API in your application
+
+Design Pattern
+--------------
+Saga Design Pattern
+kafka 
+
+DataBase
+--------
+How to fix query which is taking too much time
+
+
+
+
+
+
+ 
+
+

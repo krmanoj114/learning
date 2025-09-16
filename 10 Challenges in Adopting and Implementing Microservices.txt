@@ -1,0 +1,32 @@
+
+10 Challenges in Adopting and Implementing Microservices
+---------------------------------------------------
+Managing Microservices
+Extensive Monitoring and Logging
+Service Discovery
+Authentication and Authorization
+Config Management
+No going back
+Fault Tolerance
+Internal and External Testing
+Design with Failures in mind
+
+
+
+Advantages of microservices architecture
+----------------------------------------
+Scalability improvements
+Improved fault isolation
+Program language and technology agnostic
+Simpler to deploy
+Reusability across different areas of business
+Faster time-to-market
+Ability to experiment
+Improved data security
+Outsourcing flexibility
+Team optimization
+
+
+Zipkin - 
+
+>>>codify

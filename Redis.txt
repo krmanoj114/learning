@@ -1,0 +1,18 @@
+Redis
+-----
+http://redis.io/download
+
+To download the windows version, 
+https://github.com/microsoftarchive/redis/releases
+
+How to run Redis server:-
+Step1 - Download the Redis from https://github.com/microsoftarchive/redis/releases/download/win-3.0.504/Redis-x64-3.0.504.zip
+Step2 - Extract the downloaded zip file
+Step 3 - Run the batch file D:\Redis-x64-3.0.504\redis-server 
+
+To make Redis more secure
+-------------------------
+1> Make sure the port Redis uses to listen for connections (by default 6379 and additionally 16379 if you run Redis in cluster mode, plus 26379 for Sentinel) is firewalled, so that it is not possible to contact Redis from the outside world.
+2> Use a configuration file where the bind directive is set in order to guarantee that Redis listens on only the network interfaces you are using. For example only the loopback interface (127.0.0.1) if you are accessing Redis just locally from the same computer, and so forth.
+3> Use the requirepass option in order to add an additional layer of security so that clients will require to authenticate using the AUTH command.
+4> Use spiped or another SSL tunneling software in order to encrypt traffic between Redis servers and Redis clients if your environment requires encryption.

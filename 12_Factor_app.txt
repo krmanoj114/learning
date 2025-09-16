@@ -1,0 +1,78 @@
+
+12 factor app:-
+------------
+Codebase -  it is recommended to have one codebase per application. However, for microservices-based applications, the recommendation is to
+				have one codebase (or repository) for each microservice.  
+Dependency management - The Twelve-factor methodology recommends explicitly declaring and isolating all the dependencies. E.g., if multiple modules use 
+                       a shared function, then this function should be packaged into a library and included in your deployment package. You should never
+					   assume that a dependency will be available on the execution environment, i.e., If you are deploying on an EC2 instance, do not assume 
+					   that the instance will have the dependency installed. The dependency should be part of your code.
+                        For containerized applications, the go-to choice is the Docker file. A Docker file contains all the commands needed to create the container
+						image. Declare all your application dependencies in the dependency declaration manifest specific to your programming language, and the 
+						installation will be done based on the instructions in the docker file.
+Configuration - While dependencies should be part of the code, the configuration should be part of the environment as it will vary from one environment to another.
+                It must be strictly separate from the code. So the code will remain the same across all the different environments, but the configuration for a
+				deployment will be specified through environment variables in its own environment.
+Backing services -  a backing service is “any service the app consumes over the network as part of its normal operation.” It can be an internal service or an external
+                    integration. Whether internal or external, every backing service should be treated as an attached resource.
+                    In most cases, these services should be accessed through a URL and/or credentials, etc. That way, if the location or connection details 
+					of any services are changed, you do not need to change your code; only the configuration should be updated.
+					
+Build, Release and Run - Build, Release, and Run are three different stages and should be independent of each other. None of these should be tightly coupled to another one.
+Stateless Processes - Application should be built as a collection of processes that are stateless. That means containers will be stateless and immutable. 
+                      Any state must be persisted in a portable external service like a database or cache etc.
+Port mapping - Talking specifically of containerized applications, the binding can be achieved through the “Expose” command in the docker file.
+Concurrency - The area of concurrency is more about scalability than the concurrency itself. The guideline is that your application should be able to scale out instead of scale up and that too on the process level. So, instead of replicating your whole application, your individual microservices and the processes which are running the microservices should be able to scale individually, based on the load on that particular type of service.
+Disposability - One advantage of containerized microservices is that the containers have built-in capability for disposability. That means the instances of a service 
+               (deployed in container) can be removed, scaled, and redeployed quickly without data loss.
+                The shutdown should be graceful, and it should also handle abrupt termination.
+Dev/Prod Parity - all the production and non-production environments be as similar as possible. That means following should possibly be the same across all the 
+                  environments:
+
+					Database. Ideally, the production database should be synced back to the staging or UAT database as frequently as possible, at least 
+					on a weekly basis. This is especially important in data-intensive applications. Backing services. Apart from database, any caching solution 
+					or any cloud-based data store like firebase should also be used with a non-production environment same way it is used with production. 
+					Integration. Third-party integrations should also be integrated into the staging and UAT environment in the same way as the production.
+					Tools. The tools used for production should also be used for the non-production environment. That includes the IDE, testing tools, scripts, etc. 
+
+Logs - The application itself should not manage application logs. The process of processing and routing the logs should be separate from the application. 
+                   Consider the scenario where the application process is terminated due to some reason, and if the same service/process manages logs, then the 
+				   logging would also be terminated. So logging should be implemented as a separate service and should run in its own process, separated from the 
+				   core application.
+				
+Admin processes - Run admin/management tasks as one-off processes.  One-off admin processes should be run in an identical environment as the regular 
+                 long-running processes of the app. They run against a release, using the same codebase and config as any process run against that release. 
+				 Admin code must ship with application code to avoid synchronization issues.				
+				
+5 principle for Cloud-Native Architecture
+-----------------------------------------
+1> Design for automation
+		-Reduce manual error
+		-Speed up your development
+		-Increase Inconsistency
+		-Speed up your deployment process
+
+2> Ensure that components are stateless
+        Stateless architecture makes the application 
+        -Fault-tolerant
+        -Resilient
+        -Scalable
+        
+3> Favor managed services when possible
+        Managed services provide specific functionality
+		-Database
+		-Message queue
+		-Machine learning module
+		-Save time & resources
+		-Improve your application scalability and reliability
+		-Better security and compliance
+		
+4> Practice defense in depth
+		Multilayer of security
+		-Firewalls at network label
+		-Authentication and validation at application label
+		-Encryption at database label to protect sensitive data
+		
+5> Always be architecting
+        - Always be architecting principle help us to stay competitive in rapidly changing market
+

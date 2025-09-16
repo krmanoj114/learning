@@ -1,0 +1,20 @@
+public enum JOB_STATUS{
+				OFFLINE("OFFLINE", "job status is offline"),
+				FAILED("FAILED", "job status is failed"),
+				PROCCSS("PROCESS", "job status is processing");
+
+		JOB_STATUS(String jobStatus, String description){
+			this.jobStatus = jobStatus;
+			this.description = description;
+		}
+		private String jobStatus;
+		private String description;
+
+		public String getJobStatus(){
+			return jobStatus;
+		}
+		public String getDescription(){
+			return description;
+		}
+
+	}

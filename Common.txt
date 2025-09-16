@@ -1,0 +1,6 @@
+
+Messaging services to resolve the data inconsistency
+====================================================
+>Kafka
+>Rabbit MQ
+>Redis pops up

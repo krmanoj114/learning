@@ -1,0 +1,34 @@
+Java Interview Questions & Answers
+==================================
+Java
+----
+>Principle of Object-Oriented Programming:
+Question: What are the principles of object-oriented programming, and how do they enhance software development?
+Answer: Object-oriented programming (OOP) is based on four core principles: encapsulation, inheritance, polymorphism, and abstraction.
+ These principles promote modular, reusable, and maintainable code. Encapsulation hides the internal implementation details of objects,
+ inheritance allows for code reuse and specialization, polymorphism enables the use of objects interchangeably, and abstraction focuses 
+ on creating simplified models of complex systems.
+ 
+ 
+ 
+ 
+ 
+ 
+Mysql
+-----
+Fetch 2nd highest salary of employee
+
+1>
+SELECT MAX(salary) FROM Employee WHERE Salary NOT IN ( SELECT Max(Salary) FROM Employee);
+
+Read more: https://www.java67.com/2015/01/second-highest-salary-in-mysql-and-sql-server.html#ixzz8CiInC5Z9
+
+2>SELECT MAX(Salary) From Employee WHERE Salary < ( SELECT Max(Salary) FROM Employee);
+
+Read more: https://www.java67.com/2015/01/second-highest-salary-in-mysql-and-sql-server.html#ixzz8CiJ6mzOr
+
+Second Highest Salary using Correlated SubQuery
+-----------------------------------------------
+3>SELECT Id, Salary FROM Employee e WHERE 2=(SELECT COUNT(DISTINCT Salary) FROM Employee p WHERE e.Salary<=p.Salary)
+
+Read more: https://www.java67.com/2015/01/second-highest-salary-in-mysql-and-sql-server.html#ixzz8CiJDrHNu

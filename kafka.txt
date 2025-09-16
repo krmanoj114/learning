@@ -1,0 +1,54 @@
+
+KAFKA
+=====
+downlload kafka from:-
+https://kafka.apache.org/downloads
+
+exp:- Scala 2.13  - kafka_2.13-3.5.1.tgz (asc, sha512)
+
+After extracting go to config folder and update the log path in server.properties and Zookeeper.properties
+
+
+Step to be followed:-
+1> Start Zookeeper
+2>Start Kafka
+3>Create Topic
+   Partition Count, Replication Factor
+   
+Default port 
+============
+ Zookeeper : 2181
+ kafka 	: 9092
+
+
+
+#Run zookeeper:-
+C:\kafka>bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+#Run kafka server:-
+C:\kafka>bin\windows\kafka-server-start.bat config\server.properties
+
+
+#Create a Topic
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic Barcode-Topic --replication-factor 1 --partitions 3
+
+#To show the list of topic
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+#Describe topic
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092  --describe --topic Barcode-Topic
+
+Topic: Barcode-Topic    TopicId: xaNj1-YgQqC_ddvdtnwBCA PartitionCount: 3       ReplicationFactor: 1    Configs:
+        Topic: Barcode-Topic    Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: Barcode-Topic    Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+        Topic: Barcode-Topic    Partition: 2    Leader: 0       Replicas: 0     Isr: 0
+
+# Push message to topic
+C:\kafka\bin\windows>kafka-console-producer.bat --broker-list localhost:9092 --topic Barcode-Topic
+
+# Push bulk message to topic
+C:\kafka\bin\windows>kafka-console-producer.bat --broker-list localhost:9092 --topic Barcode-Topic <<file_path>
+
+#Start consumer to consume message from beginning
+
+C:\kafka\bin\windows>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic Barcode-Topic --from-beginning

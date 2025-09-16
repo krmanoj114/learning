@@ -1,0 +1,33 @@
+#
+# Copyright (c) 2018 The XXXXXXXX Group. All Rights Reserved.
+# The information specified here is confidential and remains property of the XXXXXXXX Group.
+# groupId     - com.xxxxxx.ocsl
+# artifactId  - xxxxxxxx-listener-service
+# name        - xxxxxxxx-listener-service
+# description - xxxxxxxx Ancillaries Service
+# 2019
+#
+
+FROM quay.io/xxxxxxxgroup/java-base:v11-alpine3.16.0
+MAINTAINER xxxxxxxx xxxxxxxx <a.xxxxxxxx@xxxx.com>
+USER root
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/s2icontainer=oci PROFILE=dev-ae1
+ARG    GIT_USER=null
+ARG    GIT_PASSWORD=null
+ARG    SERVER_PORT=8080
+ARG    PROFILE=dev-ae1
+RUN    curl http://repository.xxxxxxxxx.com/repository/mobile-middleware-binary/git-xxxxxxxx.pem --output /usr/local/share/ca-certificates/git-xxxxxxxx.crt && \
+    curl http://repository.xxxxxxxx.com/repository/mobile-middleware-binary/ping.pem --output /usr/local/share/ca-certificates/ping.pem && \
+    update-ca-certificates && \
+    keytool -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias git-xxxxxxxx -file /usr/local/share/ca-certificates/git-xxxxxxxx.crt && \
+    keytool -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias pingstage -file /usr/local/share/ca-certificates/ping.pem && \
+    mkdir -p /config && \
+    mkdir -p /logs/ && \
+    mkdir -p /target/ && \
+    chmod 777 /config/ && \
+    chmod 777 /target/ && \
+    chmod 777 /logs/
+COPY ./target/xxxxxxxx-listener-service.jar /
+WORKDIR /
+ENTRYPOINT [ "java","-javaagent:/opt/app/appdynamics/javaagent.jar", "-jar", "/xxxxxxxx-listener-service.jar","--server.port=8080", "--spring.profiles.active=${PROFILE}"]
+EXPOSE 8080

@@ -1,0 +1,97 @@
+Azure Fundamental - 900
+---------------------
+sandbox
+------
+powershell > Get-date
+bash>
+
+#To move to azure CLI
+------------------
+az upgrade (To move to azure)
+az interactive (To open azure-CLI command in interactive mode)
+
+==========
+Throughout your journey with Microsoft Azure, you’ll hear and use terms like Regions, Availability Zones, Resources, Subscriptions, and more. This module focuses on the core architectural components of Azure. The core architectural components of Azure may be broken down into two main groupings: the physical infrastructure, and the management infrastructure.
+
+Physical infrastructure
+The physical infrastructure for Azure starts with datacenters. Conceptually, the datacenters are the same as large corporate datacenters. They’re facilities with resources arranged in racks, with dedicated power, cooling, and networking infrastructure.
+
+As a global cloud provider, Azure has datacenters around the world. However, these individual datacenters aren’t directly accessible. Datacenters are grouped into Azure Regions or Azure Availability Zones that are designed to help you achieve resiliency and reliability for your business-critical workloads.
+
+The Global infrastructure site gives you a chance to interactively explore the underlying Azure infrastructure.
+
+
+Describe Azure management infrastructure
+Completed
+100 XP
+7 minutes
+The management infrastructure includes Azure resources and resource groups, subscriptions, and accounts. Understanding the hierarchical organization will help you plan your projects and products within Azure.
+
+Azure resources and resource groups
+A resource is the basic building block of Azure. Anything you create, provision, deploy, etc. is a resource. Virtual Machines (VMs), virtual networks, databases, cognitive services, etc. are all considered resources within Azure.
+
+
+Azure. You’ll learn about three of the compute options (virtual machines, containers, and Azure functions).
+You’ll also learn about some of the networking features, such as Azure virtual networks, Azure DNS, and Azure ExpressRoute.
+
+-=============
+#Command to create Linux VM
+az vm create \
+  --resource-group learn-be00aa22-3ecc-4a69-87ca-0205bacfa677 \
+  --name my-vm \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+  
+#output
+SSH key files '/home/manoj/.ssh/id_rsa' and '/home/manoj/.ssh/id_rsa.pub' have been generated under ~/.ssh to allow SSH access to the VM. If using machines without permanent storage, back up your keys to a safe location.
+Ignite (November) 2023 onwards "az vm/vmss create" command will deploy Gen2-Trusted Launch VM by default. To know more about the default change and Trusted Launch, please visit https://aka.ms/TLaD
+It is recommended to use parameter "--public-ip-sku Standard" to create new VM with Standard public IP. Please note that the default public IP used for VM creation will be changed from Basic to Standard in the future.
+Consider using the "Ubuntu2204" alias. On April 30, 2023,the image deployed by the "UbuntuLTS" alias reaches its end of life. The "UbuntuLTS" will be removed with the breaking change release of Fall 2023.
+{
+  "fqdns": "",
+  "id": "/subscriptions/e6b1a91a-7af1-4025-8a99-f717210b4a91/resourceGroups/learn-be00aa22-3ecc-4a69-87ca-0205bacfa677/providers/Microsoft.Compute/virtualMachines/my-vm",
+  "location": "westus",
+  "macAddress": "60-45-BD-06-6C-A0",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "40.112.168.220",
+  "resourceGroup": "learn-be00aa22-3ecc-4a69-87ca-0205bacfa677",
+  "zones": ""
+}
+
+# Configure NGNIX on your VM
+az vm extension set \
+  --resource-group learn-be00aa22-3ecc-4a69-87ca-0205bacfa677 \
+  --vm-name my-vm \
+  --name customScript \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.1 \
+  --settings '{"fileUris":["https://raw.githubusercontent.com/MicrosoftDocs/mslearn-welcome-to-azure/master/configure-nginx.sh"]}' \
+  --protected-settings '{"commandToExecute": "./configure-nginx.sh"}'
+  
+#Output
+{
+  "autoUpgradeMinorVersion": true,
+  "enableAutomaticUpgrade": null,
+  "forceUpdateTag": null,
+  "id": "/subscriptions/e6b1a91a-7af1-4025-8a99-f717210b4a91/resourceGroups/learn-be00aa22-3ecc-4a69-87ca-0205bacfa677/providers/Microsoft.Compute/virtualMachines/my-vm/extensions/customScript",
+  "instanceView": null,
+  "location": "westus",
+  "name": "customScript",
+  "protectedSettings": null,
+  "protectedSettingsFromKeyVault": null,
+  "provisioningState": "Succeeded",
+  "publisher": "Microsoft.Azure.Extensions",
+  "resourceGroup": "learn-be00aa22-3ecc-4a69-87ca-0205bacfa677",
+  "settings": {
+    "fileUris": [
+      "https://raw.githubusercontent.com/MicrosoftDocs/mslearn-welcome-to-azure/master/configure-nginx.sh"
+    ]
+  },
+  "suppressFailures": null,
+  "tags": null,
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "typeHandlerVersion": "2.1",
+  "typePropertiesType": "customScript"
+}

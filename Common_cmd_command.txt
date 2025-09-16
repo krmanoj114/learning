@@ -1,0 +1,20 @@
+Use full command
+----------------
+To get the serial number
+------------------------
+#wmic bios get serialnumber 
+SerialNumber
+5CD1291LNK
+
+#hostname
+LAP-TZD-0X98070
+
+#ipconfig/all
+Ethernet adapter Ethernet 3:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : IN.COFORGETECH.COM
+   Description . . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   Physical Address. . . . . . . . . : 48-9E-BD-49-4B-A3
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes

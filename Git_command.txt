@@ -1,0 +1,495 @@
+$ git --version                                                              #git version
+git version 2.39.2.windows.1
+$ git init test-project                                                      #Git create project
+Initialized empty Git repository in D:/TOYOTA/Learning/test-project/.git/
+
+$ git config --global init.defaultBranch main                                #Git config                 
+$ git branch -m main                                                                 #Rename branch name
+$ ls -al                                                                             #List all files
+total 4
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:04 ./
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:04 ../
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:09 .git/
+
+$ git status																			#Git status
+On branch main
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+$ ls -al																				#List all files
+total 4
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:16 ./
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:04 ../
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:11 .git/
+-rw-r--r-- 1 Manoj.29.Kumar 1049089 0 Mar  8 15:16 hello.text
+
+$ git rm hello.txt																		#Remove file
+fatal: pathspec 'hello.txt' did not match any files
+
+$ git remove hello.txt
+git: 'remove' is not a git command. See 'git --help'.
+
+The most similar command is
+        remote
+$ git rm hello.text
+fatal: pathspec 'hello.text' did not match any files
+
+$ ls -al
+total 4
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:16 ./
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:04 ../
+drwxr-xr-x 1 Manoj.29.Kumar 1049089 0 Mar  8 15:19 .git/
+-rw-r--r-- 1 Manoj.29.Kumar 1049089 0 Mar  8 15:16 hello.text
+
+$ git rm hello.text
+fatal: pathspec 'hello.text' did not match any files
+
+$ vi hello.txt																#Create new file through vi text editor
+
+$ git add hello.txt															# Add file to stagging area
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+
+
+$ git rm --cache hello.txt                                                          #Remove from stagging area
+rm 'hello.txt'
+
+$ git add hello.txt
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+
+$ git commit -m "adding hello.txt"                                                     # Git commit
+[main (root-commit) d6f3fd4] adding hello.txt
+ Committer: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100644 hello.txt
+
+$ git log																						#Git log
+commit d6f3fd4667c9595916194c9ba804454ac901407a (HEAD -> main)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+$ git branch feature-branch                                                                   #Create branch
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git branch
+  feature-branch
+* main
+
+$ git log
+commit d6f3fd4667c9595916194c9ba804454ac901407a (HEAD -> main, feature-branch)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git checkout feature-branch                                                                  #Switch breanch
+Switched to branch 'feature-branch'
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git branch
+* feature-branch
+  main
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git log
+commit d6f3fd4667c9595916194c9ba804454ac901407a (HEAD -> feature-branch, main)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ vi hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ vi test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git add *.text
+fatal: pathspec '*.text' did not match any files
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git add *.txt
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test.txt', LF will be replaced by CRLF the next time Git touches it
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   hello.txt
+        new file:   test.txt
+
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   hello.txt
+        new file:   test.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    test.txt
+
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git commit -m "updated hello.txt"
+[feature-branch 3493dd5] updated hello.txt
+ Committer: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 test.txt
+
+$ git log
+commit 3493dd5151c57aea6b14b9a4601ef4affddf1f83 (HEAD -> feature-branch)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:36:17 2023 +0530
+
+    updated hello.txt
+
+commit d6f3fd4667c9595916194c9ba804454ac901407a (main)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git commit
+On branch feature-branch
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git rm test.txt
+rm 'test.txt'
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    test.txt
+
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ vi test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git status
+On branch feature-branch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    test.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test.txt
+
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git log
+commit 3493dd5151c57aea6b14b9a4601ef4affddf1f83 (HEAD -> feature-branch)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:36:17 2023 +0530
+
+    updated hello.txt
+
+commit d6f3fd4667c9595916194c9ba804454ac901407a (main)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git add test.txt
+warning: in the working copy of 'test.txt', LF will be replaced by CRLF the next time Git touches it
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git commit -m "Adding the test.txt"
+[feature-branch 264519c] Adding the test.txt
+ Committer: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git log
+commit 264519c7b8dfd62886f0b2d622eba422f0cf0631 (HEAD -> feature-branch)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:39:39 2023 +0530
+
+    Adding the test.txt
+
+commit 3493dd5151c57aea6b14b9a4601ef4affddf1f83
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:36:17 2023 +0530
+
+    updated hello.txt
+
+commit d6f3fd4667c9595916194c9ba804454ac901407a (main)
+Author: Manoj Kumar - EM <Manoj.29.Kumar@coforge.com>
+Date:   Wed Mar 8 16:03:19 2023 +0530
+
+    adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ ls
+hello.txt  test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (feature-branch)
+$ git checkout main
+Switched to branch 'main'
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ ls
+hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ cat hello.txt
+Hello Text File
+
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git merge feature-branch^C                                
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git log --all --oneline                                                               #Git log
+264519c (feature-branch) Adding the test.txt
+3493dd5 updated hello.txt
+d6f3fd4 (HEAD -> main) adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git merge feature-branch                                                                #Git merge <source>
+Updating d6f3fd4..264519c
+Fast-forward
+ hello.txt | 2 +-
+ test.txt  | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git log --all --oneline
+264519c (HEAD -> main, feature-branch) Adding the test.txt
+3493dd5 updated hello.txt
+d6f3fd4 adding hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git branch -d feature-branch                                                                 #Delete branch
+Deleted branch feature-branch (was 264519c).
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ vi hello.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git status push                                                                            # git stash
+On branch main
+nothing to commit, working tree clean
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash push
+Saved working directory and index state WIP on main: 264519c Adding the test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash list                                                                            #To see the stash list
+stash@{0}: WIP on main: 264519c Adding the test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash apply																			#To bring stash file to working directory								
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash list
+stash@{0}: WIP on main: 264519c Adding the test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash push                                                                      
+Saved working directory and index state WIP on main: 264519c Adding the test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash pop                                                                     # To bring stashed file to working directory also remove the file from stash location
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (2d9c413165df1fac23329cb665e77d459612be82)
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash list
+stash@{0}: WIP on main: 264519c Adding the test.txt
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash clear                                                                    #To clear the stash files
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+$ git stash list
+
+Manoj.29.Kumar@LAP-TZD-0X98070 MINGW64 /d/TOYOTA/Learning/test-project (main)
+
+$ git branch -v 					#To see the last commit on each branch
+$ git branch --merged               #To see which branch is already merged into the branch you are on
+$ git branch --no-merged            #To see the branch wich is not merged yet into the branch
+
+Rename the branch locally with the git branch --move command:
+$ git branch --move bad-branch-name corrected-branch-name
+
+
+DELETE BRANCH
+-------------
+remove remote GitLab branch
+Both local and remote GitLab branches must be deleted.
+
+Remote GitLab branch removal commands
+A developer can use the following commands to remove the local branch, the local remote tracking branch and the branch on the GitLab server:
+
+git checkout master
+git branch -d fun_feature
+git push origin --delete fun_feature
+git branch --all
+
+
+==================================================
+
+#Edit files, add and commit. Then push with the -u (short for --set-upstream) option:
+
+git push -u origin <branch>
+
+
+=========================
+
+
+#To create release branch
+git flow release start sprint1-release           -- where <sprint1-release> is the release branch name
+
+#To make the release branch publickly available
+git flow release publish sprint1-release
+
+#To track the release branch
+git flow release track sprint1-release
+
+#To merge the any fixes in release branch to develop branch
+git checkout develop
+git pull
+git merge release/sprint1-release
+
+#Finally to finish the release activity, release branch will be merged to master
+git flow release finish sprint1-release
+
+#finally push the tag
+git push --tags
+
+
+=========
+$ git flow init
+
+$ git flow release start sprint4.1-release
+
+$ git flow release publish sprint4.1-release
+
+--to finish the release
+$ git flow release finish sprint4.1-release
+
+--to push the tag
+$ git push --tags
+
+--to track the release branch for fixes
+$ git flow release track sprint4.1-release
+
+
